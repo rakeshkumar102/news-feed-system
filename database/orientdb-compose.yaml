@@ -1,0 +1,21 @@
+version: "3"
+services:
+  orientdb:
+    image: "orientdb:latest"
+    container_name: "orient-db"
+    ports:
+      - "2424:2424"
+      - "2480:2480"
+    environment:
+      - ORIENTDB_ROOT_PASSWORD=password
+    volumes:
+      - orient-path:/orientdb/databases
+    networks:
+      - orient_network
+
+volumes:
+  orient-path: null
+
+networks:
+  orient_network:
+    driver: bridge

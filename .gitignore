@@ -1,0 +1,8 @@
+database/mysql/mysql_master/data/
+database/mysql/mysql_slave_1/data/
+database/mysql/mysql_slave_2/data/
+database/mysql/mysql_slave_3/data/
+
+
+*.mdf
+*.ldf

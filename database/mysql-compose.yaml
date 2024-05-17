@@ -1,0 +1,100 @@
+version: "3"
+services:
+  mysql_master:
+    image: mysql:latest
+    env_file:
+      - ./mysql/mysql_master/.env
+    container_name: mysql-master
+    restart: "no"
+    ports:
+      - 3306:3306
+    # command: ["chmod", "-R", "mysql:../log/"]
+    volumes:
+      - ./mysql/mysql_master/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./mysql/mysql_master/data:/var/lib/mysql
+    networks:
+      - overlay
+
+  mysql_slave_1:
+    image: mysql:latest
+    env_file:
+      - ./mysql/mysql_slave_1/.env
+    container_name: mysql-slave-1
+    restart: "no"
+    ports:
+      - 3307:3306
+    depends_on:
+      - mysql_master
+    volumes:
+      - ./mysql/mysql_slave_1/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./mysql/mysql_slave_1/data:/var/lib/mysql
+    networks:
+      - overlay
+
+  mysql_slave_2:
+    image: mysql:latest
+    env_file:
+      - ./mysql/mysql_slave_2/.env
+    container_name: mysql-slave-2
+    restart: "no"
+    ports:
+      - 3308:3306
+    depends_on:
+      - mysql_master
+      - mysql_slave_1
+    volumes:
+      - ./mysql/mysql_slave_2/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./mysql/mysql_slave_2/data:/var/lib/mysql
+    networks:
+      - overlay
+
+  mysql_slave_3:
+    image: mysql:latest
+    env_file:
+      - ./mysql/mysql_slave_3/.env
+    container_name: mysql-slave-3
+    restart: "no"
+    ports:
+      - 3309:3306
+    depends_on:
+      - mysql_master
+      - mysql_slave_1
+      - mysql_slave_2
+    volumes:
+      - ./mysql/mysql_slave_3/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./mysql/mysql_slave_3/data:/var/lib/mysql
+    networks:
+      - overlay
+
+  phpmyadmin:
+    depends_on:
+      - mysql_master
+      - mysql_slave_1
+      - mysql_slave_2
+      - mysql_slave_3
+    image: phpmyadmin:latest
+    environment:
+      PMA_HOST: mysql-master
+    ports:
+      - 8080:80
+    container_name: phpmyadmin
+    networks:
+      - overlay
+
+  haproxy:
+    image: haproxy:alpine3.17
+    container_name: haproxy
+    ports:
+      - 3300:3300
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    depends_on:
+      - mysql_master
+      - mysql_slave_1
+      - mysql_slave_2
+      - mysql_slave_3
+    networks:
+      - overlay
+
+networks:
+  overlay:

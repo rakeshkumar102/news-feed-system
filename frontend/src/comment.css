@@ -1,0 +1,38 @@
+/* comment section  */
+
+
+button{
+    border-color:rgb(127 162 183);
+    background-color:rgb(127 162 183);
+    color: white;
+    font-size: 15px;
+    padding: 5px 31px;
+    border-radius: 4px;
+}
+
+
+.avatar__name{
+    display: flex;
+    padding: 5px 5px;
+}
+.user__name{
+    margin: 5px 4px;
+
+    font-weight: bold;
+    color:black;
+    
+}
+.all__comments{
+    display: flex;
+    margin-left: 23px;
+    margin-bottom: 15px;
+    width: fit-content;
+    
+    
+}
+.user__comment{
+    padding: 6px 12px;
+    margin-left: 16px;
+    background-color: rgb(237 237 237);
+    border-radius: 8px;
+}

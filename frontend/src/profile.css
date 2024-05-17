@@ -1,0 +1,174 @@
+.profile__details {
+  margin-top: 8vh;
+  margin-left: 8vh;
+  margin-right: 8vh;
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.profile__avatar {
+  border-radius: 2vh;
+  width: 30vh;
+  height: 30vh;
+  object-fit: cover;
+}
+
+.profile__name {
+  margin-left: 4vh;
+  margin-bottom: 1vh;
+}
+
+.profile__description {
+  margin-top: 1vh;
+  margin-left: 4vh;
+  color: darkgray;
+}
+
+.nav__bar {
+  margin-top: 6vh;
+  margin-left: 8vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 8vh;
+  border-bottom: 1px solid rgb(236, 235, 235);
+  width: fit-content;
+}
+
+.feed__image {
+  height: 6vh;
+  width: 6vh;
+  margin-bottom: 1vh;
+}
+
+.feed__count {
+  margin-left: 2vh;
+  margin-bottom: 1vh;
+}
+
+.nav__text {
+  color: darkgray;
+  font-size: small;
+}
+
+.following__image {
+  margin-left: 4vh;
+  height: 6vh;
+  width: 6vh;
+  margin-bottom: 1vh;
+}
+
+.profile__body {
+  margin-left: 8vh;
+  margin-right: 8vh;
+  margin-top: 4vh;
+}
+
+.item__item {
+  border-radius: 1vh;
+}
+
+.feed__item {
+  width: 20vh;
+  height: 16vh;
+  border-radius: 1vh;
+  object-fit: cover;
+}
+
+.item__image {
+  display: flex;
+  align-items: center;
+}
+
+.item__details {
+  padding: 2vh;
+}
+
+.profile__feed__desc {
+  color: darkgray;
+}
+
+.feed__image:hover {
+  cursor: pointer;
+}
+
+.feed__count:hover {
+  cursor: pointer;
+}
+
+.following__image:hover {
+  cursor: pointer;
+}
+
+.item__image2 {
+  display: flex;
+  align-items: center;
+}
+
+.profile__user__avatar {
+  min-height: 100px;
+  min-width: 100px;
+}
+
+.profile__follow__button {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 10px;
+  border: none;
+  background-color: rgb(90, 210, 231);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  margin-left: 2vh;
+  width: 8vh;
+  margin-bottom: 1vh;
+}
+
+.name__and__follow__button {
+  display: flex;
+  align-items: center;
+}
+
+.upload__image {
+  display: flex;
+  align-items: center;
+  background-color: rgb(215, 248, 248);
+  padding-right: 2vh;
+  margin-left: 2vh;
+  margin-bottom: 1vh;
+  padding-top: 0.5vh;
+  border-radius: 1vh;
+}
+
+.upload__img {
+  margin-left: 1.5vh;
+  height: 6vh;
+  width: 6vh;
+  margin-bottom: 1vh;
+}
+
+.upload__text {
+  margin-left: 2vh;
+  margin-bottom: 1vh;
+}
+
+.upload__image:hover {
+  cursor: pointer;
+}
+
+.upload{
+  display: flex;
+  flex-direction: column;
+
+}
+.upload input,.upload textarea{
+  margin: 1rem;
+  padding: .5rem;
+  outline: none;
+  border: 1px solid rgb(177, 177, 177);
+  border-radius: 4px;
+}
+.upload textarea{
+  height: 5rem;
+}

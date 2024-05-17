@@ -1,0 +1,178 @@
+version: "3.9"
+
+services:
+  mysql_master:
+    image: mysql:latest
+    env_file:
+      - ./database/mysql/mysql_master/.env
+    container_name: mysql-master
+    restart: "no"
+    ports:
+      - 3306:3306
+    volumes:
+      - ./database/mysql/mysql_master/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./database/mysql/mysql_master/data:/var/lib/mysql
+    networks:
+      - overlay
+
+  mysql_slave_1:
+    image: mysql:latest
+    env_file:
+      - ./database/mysql/mysql_slave_1/.env
+    container_name: mysql-slave-1
+    restart: "no"
+    ports:
+      - 3307:3306
+    depends_on:
+      - mysql_master
+    volumes:
+      - ./database/mysql/mysql_slave_1/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./database/mysql/mysql_slave_1/data:/var/lib/mysql
+    networks:
+      - overlay
+
+  mysql_slave_2:
+    image: mysql:latest
+    env_file:
+      - ./database/mysql/mysql_slave_2/.env
+    container_name: mysql-slave-2
+    restart: "no"
+    ports:
+      - 3308:3306
+    depends_on:
+      - mysql_master
+    volumes:
+      - ./database/mysql/mysql_slave_2/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./database/mysql/mysql_slave_2/data:/var/lib/mysql
+    networks:
+      - overlay
+
+  mysql_slave_3:
+    image: mysql:latest
+    env_file:
+      - ./database/mysql/mysql_slave_3/.env
+    container_name: mysql-slave-3
+    restart: "no"
+    ports:
+      - 3309:3306
+    depends_on:
+      - mysql_master
+    volumes:
+      - ./database/mysql/mysql_slave_3/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./database/mysql/mysql_slave_3/data:/var/lib/mysql
+    networks:
+      - overlay
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    depends_on:
+      - mysql_master
+      - mysql_slave_1
+      - mysql_slave_2
+      - mysql_slave_3
+    environment:
+      PMA_HOST: mysql-master
+    ports:
+      - 8080:80
+    networks:
+      - overlay
+
+  haproxy:
+    image: haproxy:alpine3.17
+    container_name: haproxy
+    ports:
+      - 3300:3300
+    volumes:
+      - ./loadbalancer/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    depends_on:
+      - mysql_master
+      - mysql_slave_1
+      - mysql_slave_2
+      - mysql_slave_3
+    networks:
+      - overlay
+
+  feeds_1:
+    build:
+      context: ./backend/feeds
+    container_name: feeds-1
+    depends_on:
+      - mysql_master
+      - mysql_slave_1
+      - mysql_slave_2
+      - mysql_slave_3
+    env_file:
+      - ./backend/feeds/.env.Docker
+    ports:
+      - 8031:8031
+    networks:
+      - overlay
+
+  feeds_2:
+    build:
+      context: ./backend/feeds
+    container_name: feeds-2
+    depends_on:
+      - mysql_master
+      - mysql_slave_1
+      - mysql_slave_2
+      - mysql_slave_3
+      - feeds_1
+    env_file:
+      - ./backend/feeds/.env.Docker
+    ports:
+      - 8032:8031
+    networks:
+      - overlay
+
+  feeds_3:
+    build:
+      context: ./backend/feeds
+    container_name: feeds-3
+    depends_on:
+      - mysql_master
+      - mysql_slave_1
+      - mysql_slave_2
+      - mysql_slave_3
+      - feeds_2
+    env_file:
+      - ./backend/feeds/.env.Docker
+    ports:
+      - 8033:8031
+    networks:
+      - overlay
+
+  feeds_4:
+    build:
+      context: ./backend/feeds
+    container_name: feeds-4
+    depends_on:
+      - mysql_master
+      - mysql_slave_1
+      - mysql_slave_2
+      - mysql_slave_3
+      - feeds_3
+    env_file:
+      - ./backend/feeds/.env.Docker
+    ports:
+      - 8034:8031
+    networks:
+      - overlay
+
+  nginx:
+    build:
+      context: ./loadbalancer/nginx
+    container_name: nginx
+    depends_on:
+      - feeds_1
+      - feeds_2
+      - feeds_3
+      - feeds_4
+    ports:
+      - 8030:80
+    networks:
+      - overlay
+
+networks:
+  overlay:

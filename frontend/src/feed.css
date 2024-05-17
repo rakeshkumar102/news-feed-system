@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+.feed {
+  background-color: white;
+  border: 1px solid lightgray;
+  margin-bottom: 24px;
+  display: flex;
+  margin-left: 16vh;
+  margin-right: 16vh;
+  height: fit-content;
+}
+
+.main__image {
+  width: 35%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.comment_section{
+   
+  margin: .8rem 1rem;
+  height: 8vh;
+  margin: 0.8rem 1rem;
+  height: 5vh;
+  width: 30%;
+  border: none;
+  border-bottom: 1px solid;
+  
+  
+}
+
+.feed__content {
+  padding: 3vh;
+  width: 100%;
+}
+
+.feed__text {
+  font-size: 5vh;
+  /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
+  text-indent: 50px;
+  color: darkslategrey;
+}
+
+.feed__header {
+  display: flex;
+  align-items: center;
+  margin-top: 1vh;
+  align-self: flex-end;
+  margin-right: 3vh;
+}
+
+.feed__avatar {
+  margin-right: 10px;
+  height: 35px;
+  width: 35px;
+}
+
+.feed__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.desc__text {
+  color: rgb(45, 46, 45);
+  margin-top: 2vh;
+  font-size: medium;
+  word-spacing: 2px;
+  letter-spacing: 0.5px;
+  text-indent: 80px;
+  font-style:normal;
+  font-family: sans-serif;
+  
+}
+
+
+/* CSS */
+.button-53 {
+  background-color: #3DD1E7;
+  border: 0 solid #E5E7EB;
+  box-sizing: border-box;
+  color: #000000;
+  
+  font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 0.5rem;
+  font-weight: 500;
+  justify-content: center;
+  
+  /* line-height: 1.75rem; */
+  /* padding: .75rem 1.65rem; */
+  position: relative;
+  text-align: center;
+  text-decoration: none #000000 solid;
+  text-decoration-thickness: auto;
+  width: 10%;
+  max-height: 2.5rem;
+  
+  position: relative;
+  cursor: pointer;
+  /* transform: rotate(-2deg); */
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-53:focus {
+  outline: 0;
+}
+
+.button-53:after {
+  content: '';
+  position: absolute;
+  border: 1px solid #000000;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+.button-53:hover:after {
+  bottom: 2px;
+  left: 2px;
+}
+
+@media (min-width: 768px) {
+  .button-53 {
+    padding: .40rem 1rem;
+    font-size: 1rem;
+  }
+}
+h2{
+  margin-left: 12px;
+}
+p{
+  margin-left: 18px;
+  margin-bottom: 18px;
+}

@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+}
+
+.app {
+  background-color: #fafafa;
+}
+
+.app__header {
+  background-color: white;
+  object-fit: contain;
+  border-bottom: 1px solid lightgray;
+  padding: 8px;
+}
+
+.app__headerImage {
+  width: 13vh;
+  height: 4vh;
+  margin-left: 16vh;
+}
+
+.app__signup {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon__signup {
+  width: 13vh;
+  height: 4vh;
+}
+
+.app__userDetails {
+  display: flex;
+  flex-direction: row;
+  float: right;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  align-items: center;
+}
+
+.feed__avatar {
+  margin-left: 1vh;
+}
+
+.app__user {
+  display: flex;
+  align-items: center;
+  padding-left: 1vh;
+}
+
+.app__user:hover {
+  background-color: gainsboro;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.app__headerImage:hover {
+  cursor: pointer;
+}
+
+.app__header__top__right {
+  display: flex;
+}
+
+.logout {
+  max-height: 40px;
+  max-width: 40px;
+  margin-left: 1vh;
+  margin-right: 16vh;
+}
+
+.sign__up {
+  margin-right: 16vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 2vh;
+  padding-right: 2vh;
+  color: #fff;
+  background-color: rgb(90, 210, 231);
+  border-radius: 1vh;
+}
+
+.sign__up:hover {
+  cursor: pointer;
+}
+
+.sign__up2 {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 2vh;
+  padding-right: 2vh;
+  color: white;
+  background-color: rgb(90, 210, 231);
+  border-radius: 1vh;
+}

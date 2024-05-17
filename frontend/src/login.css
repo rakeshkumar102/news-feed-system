@@ -1,0 +1,109 @@
+.login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login__body {
+  display: flex;
+  align-items: center;
+}
+
+.login__form {
+  background-color: antiquewhite;
+  padding: 2vh;
+  border-radius: 1.6vh;
+  width: 30vh;
+}
+
+.login__input {
+  padding: 1vh;
+  margin: 10px 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border: 0;
+  border-radius: 5px;
+  width: 92%;
+  font-weight: 500;
+}
+
+.login__input:focus {
+  border: 0;
+}
+
+.login__input::selection {
+  border: 0;
+}
+
+.login__button {
+  margin-top: 8px;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 10px;
+  border: none;
+  background-color: rgb(90, 210, 231);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.image__selection {
+  width: 80vh;
+  margin-left: 8vh;
+  margin-right: 8vh;
+  margin-bottom: 4vh;
+  padding-bottom: 2vh;
+  margin-top: 1vh;
+  padding-top: 2vh;
+  background-color: aquamarine;
+  border-radius: 2vh;
+}
+
+.avatar__select {
+  min-width: 14vh;
+  min-height: 14vh;
+}
+
+.image__back {
+  background-color: rgb(210, 252, 238);
+  margin-left: 2vh;
+  margin-right: 2vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  border-radius: 2vh;
+}
+
+.unselected__image__back {
+  margin-left: 2vh;
+  margin-right: 2vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  border-radius: 2vh;
+}
+
+.choose__header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 1.5vh;
+}
+
+.choose__text {
+  text-align: center;
+  min-width: 100%;
+  color: rgb(252, 248, 244);
+}
+
+.choose__button {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 12px;
+  border: none;
+  background-color: rgb(20, 201, 177);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  margin-left: -10vh;
+}
